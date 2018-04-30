@@ -1,0 +1,8 @@
+{
+  "name": "mexa",
+  "app_id": "f6862377",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
