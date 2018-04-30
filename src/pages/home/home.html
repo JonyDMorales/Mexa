@@ -1,14 +1,28 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+    <ion-navbar color="dark">
+        <ion-title>
+            Mexa
+        </ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+    <ion-card (click)="tomarFoto()" class="text-center" padding-top>
+        <ion-card-title>
+            Tomar Foto
+        </ion-card-title>
+        <ion-card-content>
+            <ion-icon ios="ios-camera" md="md-camera" style="zoom:8.0;"></ion-icon>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card (click)="tomarVideo()" class="text-center" padding-top>
+        <ion-card-title>
+            Tomar Video
+        </ion-card-title>
+        <ion-card-content>
+            <ion-icon ios="ios-videocam" md="md-videocam" style="zoom:8.0;"></ion-icon>
+        </ion-card-content>
+    </ion-card>
+
 </ion-content>
