@@ -37,7 +37,7 @@ export class HomePage {
                 mediaType: this._camera.MediaType.PICTURE
             }
             this._camera.getPicture(options).then((imageData) => {
-            
+                
             }, (err) => {
                 console.log(err);
             });

@@ -1,28 +1,17 @@
 <ion-header>
-    <ion-navbar color="dark">
-        <ion-title>
-            Mexa
-        </ion-title>
-    </ion-navbar>
+    <img src="assets/mexa/header.png">
 </ion-header>
 
-<ion-content padding>
-    <ion-card (click)="tomarFoto()" class="text-center" padding-top>
-        <ion-card-title>
-            Tomar Foto
-        </ion-card-title>
-        <ion-card-content>
-            <ion-icon ios="ios-camera" md="md-camera" style="zoom:8.0;"></ion-icon>
-        </ion-card-content>
-    </ion-card>
-
-    <ion-card (click)="tomarVideo()" class="text-center" padding-top>
-        <ion-card-title>
-            Tomar Video
-        </ion-card-title>
-        <ion-card-content>
-            <ion-icon ios="ios-videocam" md="md-videocam" style="zoom:8.0;"></ion-icon>
-        </ion-card-content>
-    </ion-card>
-
+<ion-content class="back" padding>
+    <div class="container text-center">
+        <div (click)="tomarFoto()" class="pad">
+            <img src="assets/mexa/camera_button.png" width="150px" height="150px">
+        </div>
+        <div (click)="tomarVideo()" class="pad">
+            <img src="assets/mexa/video_button.png" width="150px" height="150px">
+        </div>
+        <div class="pad">
+            <img src="assets/mexa/hashtag.png">
+        </div>
+    </div>
 </ion-content>
