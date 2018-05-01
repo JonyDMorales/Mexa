@@ -22,11 +22,28 @@ export class HomePage {
                 private geolocation: Geolocation, 
                 public _alertController:AlertController,
                 private screenOrientation: ScreenOrientation) { 
+
+        setTimeout(()=>{
+            this.geo = true;
+        }, 7000);
         this.orientation();
         this.geolocalizacion();
     }
 
     public orientation(){
+        let confirm = this._alertController.create({
+            title: 'Ubicación',
+            message: 'Por favor, prende tu ubicación para poder continuar.',
+            buttons: [
+              {
+                text: 'Ok',
+                handler: () => {
+                    this.geolocalizacion();
+                }
+              }
+            ]
+            });
+        confirm.present();
         this.screenOrientation.lock('portrait-primary');
     }
     
