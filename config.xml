@@ -84,8 +84,8 @@
     <plugin name="cordova-plugin-camera" spec="^4.0.3" />
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1" />
     <plugin name="cordova-plugin-screen-orientation" spec="^3.0.1" />
-    <engine name="android" spec="7.0.0" />
     <plugin name="com.moust.cordova.videoplayer" spec="https://github.com/moust/cordova-plugin-videoplayer.git" />
     <plugin name="nl.x-services.plugins.videocaptureplus" spec="~1.0.0" />
     <plugin name="cordova-plugin-media-capture" spec="^3.0.2" />
+    <engine name="android" spec="7.0.0" />
 </widget>
