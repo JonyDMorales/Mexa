@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AlertController, NavController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-import { MediaCapture, MediaFile, CaptureError, CaptureImageOptions } from '@ionic-native/media-capture';
+import { MediaCapture, MediaFile, CaptureError, CaptureVideoOptions } from '@ionic-native/media-capture';
 import { Geolocation } from '@ionic-native/geolocation';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
@@ -25,7 +25,7 @@ export class HomePage {
                 private screenOrientation: ScreenOrientation,
                 private mediaCapture: MediaCapture) { 
 
-        //setTimeout(()=>{ this.geo = true; }, 7000);
+        setTimeout(()=>{ this.geolocalizacion(); }, 10000);
         this.orientation();
         this.geolocalizacion();
     }
@@ -56,8 +56,8 @@ export class HomePage {
             console.log(this.position);
             this.geo =  true;
         }).catch((error) => {
-             console.log('Error getting location', error);
-             this.geo = false;
+            console.log('Error getting location', error);
+            this.geo = false;
         });
     }
 
@@ -93,7 +93,7 @@ export class HomePage {
 
     public tomarVideo(){
         if(this.geo){
-            let options: CaptureImageOptions = {  };
+            let options: CaptureVideoOptions = { duration: 100 };
             this.mediaCapture.captureVideo(options).then( (data: MediaFile[]) => { 
                 console.log(data);
             },(err: CaptureError) => console.log(err));
