@@ -20,7 +20,7 @@ export class HomePage {
                 private geolocation: Geolocation, 
                 public _alertController:AlertController,
                 private screenOrientation: ScreenOrientation) { 
-        this.orientation();
+        //this.orientation();
     }
 
     public orientation(){
