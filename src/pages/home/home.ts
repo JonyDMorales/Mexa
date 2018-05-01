@@ -25,32 +25,31 @@ export class HomePage {
                 private screenOrientation: ScreenOrientation,
                 private mediaCapture: MediaCapture) { 
 
-        setTimeout(()=>{
-            this.geo = true;
-        }, 7000);
+        //setTimeout(()=>{ this.geo = true; }, 7000);
         this.orientation();
         this.geolocalizacion();
     }
 
     public orientation(){
-        let confirm = this._alertController.create({
-            title: 'Ubicación',
-            message: 'Por favor, prende tu ubicación para poder continuar.',
-            buttons: [
-              {
-                text: 'Ok',
-                handler: () => {
-                    this.geolocalizacion();
-                }
-              }
-            ]
-            });
-        confirm.present();
+        if(!this.geo){
+            let confirm = this._alertController.create({
+                title: 'Ubicación',
+                message: 'Por favor, prende tu ubicación para poder continuar.',
+                buttons: [
+                  {
+                    text: 'Ok',
+                    handler: () => {
+                        this.geolocalizacion();
+                    }
+                  }
+                ]
+                });
+            confirm.present();
+        }
         this.screenOrientation.lock('portrait-primary');
     }
     
     public geolocalizacion(){
-        console.log('Entro');
         this.geolocation.getCurrentPosition().then((resp) => {
             this.position.lat = resp.coords.latitude;
             this.position.lon = resp.coords.longitude;
@@ -94,10 +93,10 @@ export class HomePage {
 
     public tomarVideo(){
         if(this.geo){
-            let options: CaptureImageOptions = { limit: 3 };
+            let options: CaptureImageOptions = {  };
             this.mediaCapture.captureVideo(options).then( (data: MediaFile[]) => { 
-                ;console.log(data);
-            },(err: CaptureError) => console.error(err));
+                console.log(data);
+            },(err: CaptureError) => console.log(err));
         } else {
             let confirm = this._alertController.create({
                 title: 'Ubicación',
