@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AlertController, NavController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Geolocation } from '@ionic-native/geolocation';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 @Component({
   selector: 'page-home',
@@ -14,7 +15,19 @@ export class HomePage {
         lon: 0
     };
 
-    constructor(public navCtrl: NavController, public _camera: Camera, private geolocation: Geolocation, public _alertController:AlertController) { }
+    constructor(public navCtrl: NavController, 
+                public _camera: Camera, 
+                private geolocation: Geolocation, 
+                public _alertController:AlertController,
+                private screenOrientation: ScreenOrientation) { 
+        this.orientation();
+    }
+
+    public orientation(){
+        this.screenOrientation.lock('portrait-primary');
+        console.log(this.screenOrientation.type);
+        //this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
+    }
     
     public geolocalizacion(){
         this.geolocation.getCurrentPosition().then((resp) => {
