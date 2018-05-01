@@ -25,8 +25,6 @@ export class HomePage {
 
     public orientation(){
         this.screenOrientation.lock('portrait-primary');
-        console.log(this.screenOrientation.type);
-        //this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
     }
     
     public geolocalizacion(){
@@ -42,7 +40,7 @@ export class HomePage {
     }
 
     public tomarFoto(){
-        if(this.geolocalizacion){
+        if(this.geolocalizacion()){
             const options: CameraOptions = {
                 quality: 100,
                 destinationType: this._camera.DestinationType.DATA_URL,
@@ -72,7 +70,7 @@ export class HomePage {
     }
 
     public tomarVideo(){
-        if(this.geolocalizacion){
+        if(this.geolocalizacion()){
             const options: CameraOptions = {
                 quality: 100,
                 destinationType: this._camera.DestinationType.DATA_URL,
