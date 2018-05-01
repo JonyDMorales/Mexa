@@ -76,8 +76,6 @@ export class HomePage {
     public tomarVideo(){
         if(this.geo){
             const options: CameraOptions = {
-                quality: 100,
-                destinationType: this._camera.DestinationType.DATA_URL,
                 mediaType: this._camera.MediaType.VIDEO
             }
             this._camera.getPicture(options).then((imageData) => {
