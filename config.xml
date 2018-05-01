@@ -87,4 +87,5 @@
     <engine name="android" spec="7.0.0" />
     <plugin name="com.moust.cordova.videoplayer" spec="https://github.com/moust/cordova-plugin-videoplayer.git" />
     <plugin name="nl.x-services.plugins.videocaptureplus" spec="~1.0.0" />
+    <plugin name="cordova-plugin-media-capture" spec="^3.0.2" />
 </widget>
