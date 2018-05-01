@@ -2,8 +2,9 @@
     <img src="assets/mexa/header.png">
 </ion-header>
 
-<ion-content class="back" padding>
-    <div class="container text-center">
+<ion-content class="back" [ngClass]="{ 'back': geo == true, 'back2': geo != true }" padding>
+    <div class="text-center text-white pad2" *ngIf="!geo"><i class="fa fa-5x fa-refresh fa-spin"></i> <br> Cargando... </div>
+    <div class="container text-center" *ngIf="geo">
         <div (click)="tomarFoto()" class="pad">
             <img src="assets/mexa/camera_button.png" width="150px" height="150px">
         </div>

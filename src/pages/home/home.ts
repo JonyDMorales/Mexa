@@ -15,12 +15,15 @@ export class HomePage {
         lon: 0
     };
 
+    geo:boolean = false;
+
     constructor(public navCtrl: NavController, 
                 public _camera: Camera, 
                 private geolocation: Geolocation, 
                 public _alertController:AlertController,
                 private screenOrientation: ScreenOrientation) { 
-        //this.orientation();
+        this.orientation();
+        this.geolocalizacion();
     }
 
     public orientation(){
@@ -28,19 +31,20 @@ export class HomePage {
     }
     
     public geolocalizacion(){
+        console.log('Entro');
         this.geolocation.getCurrentPosition().then((resp) => {
             this.position.lat = resp.coords.latitude;
             this.position.lon = resp.coords.longitude;
             console.log(this.position);
-            return true;
+            this.geo =  true;
         }).catch((error) => {
              console.log('Error getting location', error);
-             return false;
+             this.geo = false;
         });
     }
 
     public tomarFoto(){
-        if(this.geolocalizacion()){
+        if(this.geo){
             const options: CameraOptions = {
                 quality: 100,
                 destinationType: this._camera.DestinationType.DATA_URL,
@@ -60,7 +64,7 @@ export class HomePage {
                   {
                     text: 'Ok',
                     handler: () => {
-                      console.log('Disagree clicked');
+                        this.geolocalizacion();
                     }
                   }
                 ]
@@ -70,7 +74,7 @@ export class HomePage {
     }
 
     public tomarVideo(){
-        if(this.geolocalizacion()){
+        if(this.geo){
             const options: CameraOptions = {
                 quality: 100,
                 destinationType: this._camera.DestinationType.DATA_URL,
@@ -89,7 +93,7 @@ export class HomePage {
                   {
                     text: 'Ok',
                     handler: () => {
-                      console.log('Disagree clicked');
+                        this.geolocalizacion();
                     }
                   }
                 ]
