@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AlertController, NavController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { VideoCapturePlus, VideoCapturePlusOptions, MediaFile } from '@ionic-native/video-capture-plus';
 import { Geolocation } from '@ionic-native/geolocation';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
@@ -21,7 +22,8 @@ export class HomePage {
                 public _camera: Camera, 
                 private geolocation: Geolocation, 
                 public _alertController:AlertController,
-                private screenOrientation: ScreenOrientation) { 
+                private screenOrientation: ScreenOrientation,
+                private videoCapturePlus: VideoCapturePlus) { 
 
         setTimeout(()=>{
             this.geo = true;
@@ -92,13 +94,15 @@ export class HomePage {
 
     public tomarVideo(){
         if(this.geo){
-            const options: CameraOptions = {
-                mediaType: this._camera.MediaType.VIDEO
+            const options: VideoCapturePlusOptions = {
+                limit: 1,
+                highquality: true
             }
-            this._camera.getPicture(options).then((imageData) => {
-            
-            }, (err) => {
-                console.log(err);
+             
+            this.videoCapturePlus.captureVideo(options).then((mediafile: MediaFile[]) => {
+                console.log(mediafile)
+            }, error => {
+                console.log('Something went wrong')
             });
         } else {
             let confirm = this._alertController.create({

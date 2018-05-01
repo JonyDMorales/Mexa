@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Camera } from '@ionic-native/camera';
 import { Geolocation } from '@ionic-native/geolocation';
+import { VideoCapturePlus } from '@ionic-native/video-capture-plus';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 import { MyApp } from './app.component';
@@ -29,6 +30,7 @@ import { HomePage } from '../pages/home/home';
     Camera,
     Geolocation,
     ScreenOrientation,
+    VideoCapturePlus,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
